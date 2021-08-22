@@ -17,15 +17,18 @@ public class PlayerMove : MonoBehaviour
 
     int countJump = 0;
     public int jumpMax = 2;
-
-
+    
+   
     void Start()
     {
         cc = gameObject.GetComponent<CharacterController>();
+ 
     }
 
     void Update()
     {
+      
+
         //WASD ¿Ãµø
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
@@ -42,6 +45,7 @@ public class PlayerMove : MonoBehaviour
 
         cc.Move(dir * speed * Time.deltaTime);
 
+        
     }
     void Jump(out float dirY)
     {
@@ -69,4 +73,16 @@ public class PlayerMove : MonoBehaviour
         yVelocity += gravity * Time.deltaTime;
 
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        
+        if (other.gameObject.name == "Base")
+        {
+            Debug.Log("Base");
+            Gui.instance.gameObject.SetActive(true);
+
+
+        }
+    }
+   
 }
