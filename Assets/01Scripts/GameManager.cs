@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     {
         SoundManager.instance.PlayBGM(SoundManager.BGM_SOUND_TYPE.BGM_START);
         Gui.instance.gameObject.SetActive(false);
-        
+       
     }
 
     // Update is called once per frame

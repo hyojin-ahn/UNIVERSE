@@ -81,7 +81,6 @@ public class PlayerMove : MonoBehaviour
             Debug.Log("Base");
             Gui.instance.gameObject.SetActive(true);
 
-
         }
     }
    
