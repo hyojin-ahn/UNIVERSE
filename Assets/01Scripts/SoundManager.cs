@@ -30,7 +30,12 @@ public class SoundManager : MonoBehaviour
     //EFT(효과음) 종류
     public enum EFT_SOUND_TYPE
     {
-        
+        EFT_MONSTER,
+        EFT_FOOTSTEP,
+        EFT_BREATH,
+        EFT_GUN,
+        EFT_EXPLO,
+        EFT_ROBOT_TRANSFORM
     }
 
     //EFT AudioSource 컴포넌트 담을 변수
