@@ -31,7 +31,7 @@ public class JH_ADEnemy : MonoBehaviour
     
 
 
-    public GameObject player;
+    private GameObject player;
     
     public NavMeshAgent agent;
 
