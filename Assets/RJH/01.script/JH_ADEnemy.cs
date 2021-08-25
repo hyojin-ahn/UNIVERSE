@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(CharacterController))]
 public class JH_ADEnemy : MonoBehaviour
 {
     public enum State
@@ -31,7 +32,7 @@ public class JH_ADEnemy : MonoBehaviour
     
 
 
-    private GameObject player;
+    private Transform player;
     
     public NavMeshAgent agent;
 
@@ -48,10 +49,12 @@ public class JH_ADEnemy : MonoBehaviour
     float currentTime;
     public float idleDelayTime = 0.5f;
     public BoxCollider Attackbox;
-    
+    CharacterController cc;
+    public float speed = 2;
     void Start()
     {
-
+        player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Transform>();
+        cc = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         EnemycurrHp = EnemyMaxHP;
         
@@ -83,10 +86,16 @@ public class JH_ADEnemy : MonoBehaviour
    
     void IdleState()
     {
-        if (DistancePlayer() < chaseDistance)
+        Vector3 dir = player.transform.position - transform.position;
+        float distance = dir.magnitude;
+        dir.Normalize();
+        dir.y = 0;
+
+       
+        if (distance < chaseDistance)
         {
             currentState = State.Chase;
-            animator.SetBool("Run", true);
+            animator.SetTrigger("Run");
 
         }
 
@@ -97,7 +106,14 @@ public class JH_ADEnemy : MonoBehaviour
     {
             TurnDestination();
             MoveDestination();
-        if (DistancePlayer() < attackDistance)
+
+        Vector3 dir = player.transform.position - transform.position;
+        float distance = dir.magnitude;
+        dir.Normalize();
+        dir.y = 0;
+       
+
+        if (distance < attackDistance)
         {
             currentState = State.Attack;
         }
@@ -105,7 +121,7 @@ public class JH_ADEnemy : MonoBehaviour
     }
     void AttackState()
     {
-            animator.SetBool("Run", false);
+            
 
         float targetRadius = 1.5f;
         float targetRange = 2;
@@ -114,12 +130,17 @@ public class JH_ADEnemy : MonoBehaviour
             {
                 StartCoroutine(Attack());
             }
-            
-        if (DistancePlayer() > reChaseDistance)
+
+        Vector3 dir = player.transform.position - transform.position;
+        float distance = dir.magnitude;
+        dir.Normalize();
+        dir.y = 0;
+        
+        if (distance > reChaseDistance)
         {
-            
-            currentState = State.Idle;
-           
+
+            currentState = State.Chase;
+            animator.SetTrigger("Run");
         }
 
 
@@ -164,16 +185,21 @@ public class JH_ADEnemy : MonoBehaviour
        CreatBloodEffect();
         if(collision.gameObject.name.Contains("Bullet"))
         {
-            EnemycurrHp -= 20;
-            animator.SetTrigger("Hit");
 
-            print(EnemycurrHp);
-            if (EnemycurrHp <= 0)
+            StopAllCoroutines();
+           
+            EnemycurrHp -= 20;
+            if(EnemycurrHp>0)
+            { 
+            animator.SetTrigger("Hit");
+            }
+            
+            
+            else if (EnemycurrHp <= 0)
             {
-                isDead = true;
-                agent.isStopped = true;
+                currentState = State.Dead;
                 animator.SetTrigger("Death");
-                Destroy(gameObject,3f);
+                
 
             }
            
@@ -199,20 +225,16 @@ public class JH_ADEnemy : MonoBehaviour
 
     void TurnDestination()
     {
-        Quaternion lookRotation = Quaternion.LookRotation(player.transform.position - transform.position);
+        Quaternion lookRotation = Quaternion.LookRotation(player.position - transform.position);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, Time.deltaTime * rotate);
     }
 
     void MoveDestination()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Enemyspeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, player.position, Enemyspeed * Time.deltaTime);
     }
    
-    float DistancePlayer()
-    {
-        float distance = Vector3.Distance(transform.position, player.transform.position);
-        return distance;
-    }
+   
 
 
     void CreatBloodEffect()
