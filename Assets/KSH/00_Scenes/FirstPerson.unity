@@ -819,6 +819,8 @@ MonoBehaviour:
   audio: {fileID: 1810676774}
   bulletsText: {fileID: 1155772214}
   Hpbar: {fileID: 8489299457107138615, guid: ae902c57377c3f6408e289dc7f57d93f, type: 3}
+  hitSparkPrefab: {fileID: 100014, guid: 5332791ebce075d4a9e56f4581e7fb47, type: 3}
+  hitHolePrefab: {fileID: 100002, guid: caa8bd0d2623acf4d915f16e0ab71218, type: 3}
 --- !u!114 &844798678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1179,7 +1181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.16862746, g: 0.882353, b: 0.98823535, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1406,7 +1408,7 @@ GameObject:
   m_Layer: 6
   m_Name: shootpoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1418,7 +1420,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1713242959}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.4}
+  m_LocalPosition: {x: 0, y: -0.114, z: 1.049}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1810676770}
@@ -1596,6 +1598,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &1810676775
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810676769}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2144681687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,8 +1646,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -29.92, y: -44.527}
-  m_SizeDelta: {x: 95.5806, y: 89.0531}
+  m_AnchoredPosition: {x: -65.055405, y: -103.91183}
+  m_SizeDelta: {x: 207.8252, y: 207.8236}
   m_Pivot: {x: 0.18697055, y: -0.00000015646219}
 --- !u!114 &2144681689
 MonoBehaviour:
@@ -1646,14 +1662,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.32216746, g: 0.2991812, b: 0.41509432, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dc87e230d9ebdb040980461a670fc248, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 021a3d0cba8727641b64bd918097b04b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1682,6 +1698,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullet1(1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8611526066205211087, guid: 009ffa50c314e514fae0c2603756e4b7, type: 3}
+      propertyPath: sparkEffect
+      value: 
+      objectReference: {fileID: 100000, guid: 717898f1e82d6b94f8dfa819112cc432, type: 3}
+    - target: {fileID: 8611526066205211087, guid: 009ffa50c314e514fae0c2603756e4b7, type: 3}
+      propertyPath: groundEffect
+      value: 
+      objectReference: {fileID: 100002, guid: fc7f8379080d0a844ad699b91bfd56f0, type: 3}
     - target: {fileID: 8614397253734217169, guid: 009ffa50c314e514fae0c2603756e4b7, type: 3}
       propertyPath: m_RootOrder
       value: 5
