@@ -124,7 +124,7 @@ public class JH_ADEnemy : MonoBehaviour
             
 
         float targetRadius = 1.5f;
-        float targetRange = 2;
+        float targetRange = 2.5f;
         RaycastHit[] RayHits = Physics.SphereCastAll(transform.position, targetRadius, transform.forward, targetRange, LayerMask.GetMask("Player"));
             if(RayHits.Length>0 && !isAttack)
             {
@@ -197,8 +197,10 @@ public class JH_ADEnemy : MonoBehaviour
             
             else if (EnemycurrHp <= 0)
             {
+                cc.enabled = false;
                 currentState = State.Dead;
                 animator.SetTrigger("Death");
+                Destroy(gameObject, 3f);
                 
 
             }
