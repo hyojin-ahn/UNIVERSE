@@ -94,6 +94,10 @@ public class WeaponCtrl : MonoBehaviour
 
     }
 
+    /* Spark Effect */
+    public GameObject hitSparkPrefab;
+    public GameObject hitHolePrefab;
+
     /* Fire */
     private void Fire()
     {
@@ -110,6 +114,10 @@ public class WeaponCtrl : MonoBehaviour
         // 래이캐스트에 감지되었을 때만 실행되고 싶다
         if (Physics.Raycast(shootPoint.position, shootPoint.transform.forward, out hit, range))
         {
+            GameObject hitSpark = Instantiate(hitSparkPrefab, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+            Destroy(hitSpark, 0.5f);
+            GameObject hitHole = Instantiate(hitSparkPrefab, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+            Destroy(hitHole, 5f);
             Debug.Log("Hit!");
         }
         // 초기화
