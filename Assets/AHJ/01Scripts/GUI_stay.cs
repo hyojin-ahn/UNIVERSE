@@ -20,8 +20,7 @@ public class GUI_stay : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-		GameObject inventory = transform.Find("Inventory").gameObject;
-		inventory.SetActive(false);
+		
     }
 
     // Update is called once per frame
