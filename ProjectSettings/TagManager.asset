@@ -6,7 +6,6 @@ TagManager:
   tags:
   - BULLET
   - Fire
-  - EnemyAttack
   - Item
   layers:
   - Default
@@ -16,7 +15,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - EnemyAttack
+  - Item
   - 
   - 
   - 

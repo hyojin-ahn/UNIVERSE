@@ -197,8 +197,7 @@ GameObject:
   - component: {fileID: 494698}
   - component: {fileID: 9500310}
   - component: {fileID: 14365428}
-  - component: {fileID: 934698447}
-  - component: {fileID: 934698448}
+  - component: {fileID: 11432326}
   m_Layer: 0
   m_Name: thc6
   m_TagString: Untagged
@@ -213,16 +212,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111292}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
   m_LocalPosition: {x: -1.2690953, y: 0.015, z: -3.9280033}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 462102}
   - {fileID: 440078}
-  - {fileID: 399883743}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &9500310
 Animator:
   serializedVersion: 3
@@ -233,7 +231,7 @@ Animator:
   m_GameObject: {fileID: 111292}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 1c345d5c2a9b820439fe3bd81aa11b09, type: 3}
-  m_Controller: {fileID: 9100000, guid: 498a371a41c334d478b6845cbde2b9d5, type: 2}
+  m_Controller: {fileID: 9100000, guid: 73656d61198e95244887bfb747b30016, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -253,36 +251,14 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2.04
-  m_Radius: 0.85
+  m_Height: 2.17
+  m_Radius: 0.81
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!195 &934698447
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 111292}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &934698448
+  m_Center: {x: 0, y: 1.1, z: 0}
+--- !u!114 &11432326
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -291,29 +267,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 111292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a4741a5ffc2b5d418fe7f5849c60852, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e2744403d2cbfb4f867bb5e724215a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
-  Enemyspeed: 3
-  attackCoolTime: 3
-  attackTimer: 3
-  rotate: 360
-  chaseDistance: 5
-  attackDistance: 2.5
-  reChaseDistance: 3
-  isDead: 0
-  isAttack: 0
-  agent: {fileID: 934698447}
-  EnemycurrHp: 0
-  EnemyMaxHP: 100
-  bloodFac: {fileID: 1000010675638318, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c, type: 3}
-  animator: {fileID: 9500310}
-  idleDelayTime: 0.5
-  Attackbox: {fileID: 399883742}
-  speed: 2
-  FireFac: {fileID: 0}
-  FirePos: {fileID: 0}
+  speed: 1.1
+  runSpeed: 3
+  turnSpeed: 65
+  gravity: 20
 --- !u!1 &112038
 GameObject:
   m_ObjectHideFlags: 0
@@ -3067,47 +3027,3 @@ Transform:
   m_Father: {fileID: 454378}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &399883741
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 399883743}
-  - component: {fileID: 399883742}
-  m_Layer: 0
-  m_Name: EnemyAttack
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &399883743
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399883741}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.02, z: 1.2200003}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 494698}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &399883742
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399883741}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

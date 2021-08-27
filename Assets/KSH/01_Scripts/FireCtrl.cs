@@ -14,7 +14,6 @@ public class FireCtrl : MonoBehaviour
     {
         // bullet이 바라보는 방향을 고정시키고 싶다
 
-
     }
 
     // Update is called once per frame
@@ -35,8 +34,6 @@ public class FireCtrl : MonoBehaviour
 
     void Fire()
     {
-        isFire = true;
-
         // Bullet 동적으로 생성 : Instantiate(프리팹, 위치, 각도)
         Instantiate(bulletPrefab, firePos.position, firePos.rotation);
     }
